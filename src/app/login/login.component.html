@@ -1,39 +1,99 @@
-<div class="panel-header" style="padding: 5.2rem; min-height: 1400px; background: #fd63b475;">
-<div class="main-content">
-    <div class="card-header">
-        <h5 class="title" style="color: white;">Login with Kanhaiya..</h5>
+<!DOCTYPE html>
+<html lang="en">
+
+<head xmlns:th="https://www.thymeleaf.org">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+
+  <title>Log In Page</title>
+  <style>
+    body {
+      padding: 0;
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: white;
+      padding-top: 25vh;
+    }
+
+    .container {
+      width: 400px;
+      display: flex;
+      flex-direction: column;
+      margin: auto;
+      align-items: center;
+      background-color: rgb(22, 21, 21);
+      border-radius: 15px;
+      padding: 25px 10px;
+      box-shadow: 0 0 15px rgb(80, 79, 79);
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      width: 90%;
+
+    }
+
+    input {
+      height: 40px;
+      border-radius: 10px;
+      border: none;
+      outline: none;
+      margin: 5px;
+      text-align: center;
+      font-size: 18px;
+      color: white;
+      background-color: rgb(48, 46, 46);
+
+    }
+
+    .btns {
+      margin: 15px auto;
+    }
+
+    button {
+      background-color: rgb(0, 0, 0);
+      color: white;
+      border: none;
+      padding: 8px 30px;
+      border-radius: 10px;
+      font-size: 18px;
+      cursor: pointer;
+      margin: 5px 25px;
+    }
+
+    button:hover {
+      background-color: tomato;
+    }
+
+    .msg {
+      font-size: 12px;
+      color: yellow;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h2 style="  font-size: 1.5em;
+    margin-bottom: 30px;
+    font-family: monospace;">Enter Your Login Details</h2>
+    <form>
+      <input #username type="text" name="username" id="username" placeholder="username">
+      <input #password type="password" name="password" id="password" placeholder="password">
+      <div class="btns">
+        <button (click)=onLoginClicked(username.value,password.value) type="submit">Login</button>
       </div>
-    <div class="col-md-12">
-        <div class="card">
-          
-          <div class="card-body">
-            <form>
-          
-              <div class="row">
-                <div class="col-md-6 pl-1" style="margin: 2rem;">
-                    <div class="form-group">
-                      <label for="email">Email address</label>
-                      <input name="email" id="email" type="email" class="form-control" placeholder="Email">
-                    </div>
-
-                  <div class="form-group">
-                    <label>First Name</label>
-                    <input type="password" class="form-control" placeholder="password">
-                  </div>
-
-                  <div>
-                    <div class="font-icon-detail">
-                        Login
-                      <i class="now-ui-icons arrows-1_minimal-right"></i>
-                    </div>
-                  </div>
-                </div>
-               
-              </div>
-            
-            </form>
-          </div>
-        </div>
-
+    </form>
+    <div th:if="${param.error}" class="msg">
+      Invalid Username or Password !!
+    </div>
+    <div th:if="${param.success}" class="msg">
+      You have been Successfully Logged Out !!
+    </div>
   </div>
-</div>
+</body>
+
+</html>
